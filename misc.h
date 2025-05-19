@@ -12,8 +12,8 @@ struct Platform {
 };
 
 void string_to_c_str(string string_val, char* c_string_val);
-Platform get_platform();
 char split_whitespace(string string_val);
+Platform get_platform();
 string ascii_from_hex(string hex_val);
 string hex_from_ascii(string ascii_val);
 int get_random_int(int min, int max);

@@ -3,9 +3,10 @@
 #include <typeinfo>
 
 using namespace std;
-int main(int argc, char **argv) {
+
+void test_string_to_c_str() {
     string hello = "Hello, World";
-    char *hello_c_string;
+    char hello_c_string[1024];
     string_to_c_str(hello, hello_c_string);
     cout << "Type of hello: " << typeid(hello).name() << endl;
     cout << "Value of hello: " << hello << endl;
@@ -13,4 +14,9 @@ int main(int argc, char **argv) {
     cout << "Value of hello_c_string: ";
     printf("%s", hello_c_string);
     cout << endl;
+}
+
+int main() {
+    test_string_to_c_str();
+    return 0;
 }
