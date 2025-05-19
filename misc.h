@@ -11,6 +11,7 @@ struct Platform {
     string kernel_version;
 };
 
+void string_to_c_str(string string_val, char* c_string_val);
 Platform get_platform();
 char split_whitespace(string string_val);
 string ascii_from_hex(string hex_val);
