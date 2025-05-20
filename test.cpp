@@ -38,8 +38,17 @@ void test_run_command() {
     cout << endl << endl << endl;
 }
 
+void test_return_output() {
+    cout << "test_return_output()" << endl;
+    cout << "Running ls -l..." << endl;
+    ShellResult result = return_output("ls -l", "", false);
+    print_shell_result(result);
+    cout << endl << endl << endl;
+}
+
 int main() {
     test_string_to_c_str();
     test_run_command();
+    test_return_output();
     return 0;
 }

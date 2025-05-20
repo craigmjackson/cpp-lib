@@ -13,7 +13,7 @@ struct ShellResult {
 
 void print_shell_result(ShellResult result);
 ShellResult run_command(string command, string cwd, bool debug);
-ShellResult return_output(string command, string cwd);
+ShellResult return_output(string command, string cwd, bool debug);
 string read_file(string path);
 void write_file(string path, string text);
 void append_file(string path, string text);
