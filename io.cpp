@@ -7,25 +7,38 @@
 
 using namespace std;
 
-string get_cwd() {
-    char path[1024];
-    if (getcwd(path, 1024) != NULL) {
-        return string(path);
-    }
-    cerr << "Error gettting current working directory";
-    return "";
+void print_shell_result(ShellResult result) {
+    cout << "Result:" << endl;
+    cout << "  command: \"" << result.command << "\"" << endl;
+    cout << "  cwd: \"" << result.cwd << "\"" << endl;
+    cout << "  output: \"" << result.output << "\"" << endl;
+    cout << "  return_code: " << result.return_code << endl;
 }
 
-// ShellResult run_command(string command, string cwd) {
-//     if (cwd == "") {
-//         system(command);
-//     } else {
-//         char path[PATH_MAX];
-//         string_to_c_str(command, path);
-//         string getcwd(path, PATH_MAX);
-//         chdir(path);
-//         system(command);
-//         chdir(existing_cwd);
-//     }
-//
-// }
+ShellResult run_command(string command, string cwd, bool debug = false) {
+    ShellResult result;
+    result.command = command;
+    char command_c_string[1024];
+    string_to_c_str(command, command_c_string);
+    char existing_cwd_c_string[1024];
+    getcwd(existing_cwd_c_string, 1024);
+    if (cwd == "") {
+        result.cwd = string(existing_cwd_c_string);
+        if (debug) {
+            cout << "Running command \"" << command << "\" from directory \"" << result.cwd << "\"..." << endl;
+        }
+        result.return_code = system(command_c_string);
+    } else {
+        result.cwd = cwd;
+        char cwd_c_string[1024];
+        string_to_c_str(cwd, cwd_c_string);
+        chdir(cwd_c_string);
+        if (debug) {
+            cout << "Running command \"" << command << "\" from directory \"" << cwd << endl;
+        }
+        result.return_code = system(command_c_string);
+        chdir(existing_cwd_c_string);
+    }
+    return result;
+}
+

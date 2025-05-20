@@ -7,11 +7,12 @@ using namespace std;
 struct ShellResult {
     int return_code = -1;
     string command = "";
+    string cwd = "";
     string output = "";
 };
 
-string get_cwd();
-ShellResult run_command(string command, string cwd);
+void print_shell_result(ShellResult result);
+ShellResult run_command(string command, string cwd, bool debug);
 ShellResult return_output(string command, string cwd);
 string read_file(string path);
 void write_file(string path, string text);
