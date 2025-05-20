@@ -1,5 +1,6 @@
 #include <iostream>
 #include "misc.h"
+#include "io.h"
 #include <typeinfo>
 
 using namespace std;
@@ -16,7 +17,13 @@ void test_string_to_c_str() {
     cout << endl;
 }
 
+void test_getcwd() {
+    string cwd = get_cwd();
+    cout << "cwd: " << cwd << endl;
+}
+
 int main() {
     test_string_to_c_str();
+    test_getcwd();
     return 0;
 }

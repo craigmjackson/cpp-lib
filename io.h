@@ -4,14 +4,15 @@ using namespace std;
 #ifndef IO_H
 #define IO_H
 
-struct Shell {
+struct ShellResult {
     int return_code = -1;
     string command = "";
     string output = "";
 };
 
-Shell run_command(string command, string cwd);
-Shell return_output(string command, string cwd);
+string get_cwd();
+ShellResult run_command(string command, string cwd);
+ShellResult return_output(string command, string cwd);
 string read_file(string path);
 void write_file(string path, string text);
 void append_file(string path, string text);
