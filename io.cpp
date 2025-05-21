@@ -12,8 +12,10 @@ void print_shell_result(ShellResult result) {
     cout << "Result:" << endl;
     cout << "  command: \"" << result.command << "\"" << endl;
     cout << "  cwd: \"" << result.cwd << "\"" << endl;
-    cout << "  output: \"" << result.output << "\"" << endl;
     cout << "  return_code: " << result.return_code << endl;
+    cout << "  output:" << endl;
+    cout << result.output << endl;
+
 }
 
 ShellResult run_command(string command, string cwd, bool debug) {
@@ -51,24 +53,26 @@ ShellResult return_output(string command, string cwd, bool debug) {
     char existing_cwd_c_string[1024];
     char cwd_c_string[1024];
     FILE *handle;
-
     strcpy(command_c_string, command.c_str());
     result.command = command;
-    if (debug) {
-        cout << "Running command \"" << command << "\" from directory \"" << result.cwd << "\"..." << endl;
-    }
+    char buffer[128];
     result.cwd = (cwd == "") ? string(existing_cwd_c_string) : cwd;
     if (cwd != "") {
         getcwd(existing_cwd_c_string, 1024);
         strcpy(cwd_c_string, cwd.c_str());
         chdir(cwd_c_string);
     }
+    if (debug) {
+        cout << "Running command \"" << command << "\" from directory \"" << result.cwd << "\"..." << endl;
+    }
     handle = popen(command_c_string, "r");
     if (handle == NULL) {
         cout << "Could not open handle for running command: \"" << command << "\"";
         return result;
     }
-    // TODO: Check into wait() call to handle return codes elegantly
+    while (fgets(buffer, sizeof(buffer), handle) != nullptr) {
+        result.output.append(buffer);
+    }
     result.return_code = pclose(handle);
     if (cwd != "") {
         chdir(existing_cwd_c_string);

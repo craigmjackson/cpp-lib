@@ -43,7 +43,19 @@ void test_return_output() {
     cout << "Running ls -l..." << endl;
     ShellResult result = return_output("ls -l", "", false);
     print_shell_result(result);
-    cout << endl << endl << endl;
+    cout << endl;
+    cout << "Running ls -l with debug..." << endl;
+    ShellResult result_with_debug = return_output("ls -l", "", true);
+    print_shell_result(result_with_debug);
+    cout << endl;
+    cout << "Running ls -l from /..." << endl;
+    ShellResult result_with_cwd = return_output("ls -l", "/", false);
+    print_shell_result(result_with_cwd);
+    cout << endl;
+    cout << "Running ls -l from / with debug..." << endl;
+    ShellResult result_with_cwd_and_debug = return_output("ls -l", "/", true);
+    print_shell_result(result_with_cwd_and_debug);
+    cout << endl << endl;
 }
 
 int main() {
