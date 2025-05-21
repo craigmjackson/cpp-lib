@@ -22,7 +22,7 @@ ShellResult run_command(string command, string cwd, bool debug) {
     ShellResult result;
     result.command = command;
     char command_c_string[1024];
-    string_to_c_str(command, command_c_string);
+    strcpy(command_c_string, command.c_str());
     char existing_cwd_c_string[1024];
     getcwd(existing_cwd_c_string, 1024);
     if (cwd == "") {
@@ -34,7 +34,7 @@ ShellResult run_command(string command, string cwd, bool debug) {
     } else {
         result.cwd = cwd;
         char cwd_c_string[1024];
-        string_to_c_str(cwd, cwd_c_string);
+        strcpy(cwd_c_string, cwd.c_str());
         chdir(cwd_c_string);
         if (debug) {
             cout << "Running command \"" << command << "\" from directory \"" << cwd << endl;

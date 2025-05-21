@@ -1,22 +1,11 @@
 #include <iostream>
+#include <string>
 #include "misc.h"
 #include "io.h"
 #include <typeinfo>
+#include <vector>
 
 using namespace std;
-
-void test_string_to_c_str() {
-    cout << "test_string_to_c_str()" << endl;
-    string hello = "Hello, World";
-    char hello_c_string[1024];
-    string_to_c_str(hello, hello_c_string);
-    cout << "Type of hello: " << typeid(hello).name() << endl;
-    cout << "Value of hello: " << hello << endl;
-    cout << "Type of hello_c_string: " << typeid(hello_c_string).name() << endl;
-    cout << "Value of hello_c_string: ";
-    printf("%s", hello_c_string);
-    cout << endl << endl << endl;
-}
 
 void test_run_command() {
     cout << "test_run_command()" << endl;
@@ -58,9 +47,19 @@ void test_return_output() {
     cout << endl << endl;
 }
 
+void test_split_whitespace() {
+    cout << "test_split_whitespace()" << endl;
+    string bunch_of_text = "Honey bunches of      text";
+    vector<string> line_split = split_whitespace(bunch_of_text);
+    for ( string element: line_split ) {
+        cout << "Element: \"" << element << "\"" << endl;
+    }
+    cout << endl << endl;
+}
+
 int main() {
-    test_string_to_c_str();
     test_run_command();
     test_return_output();
+    test_split_whitespace();
     return 0;
 }

@@ -1,8 +1,16 @@
+#include <iostream>
 #include <string>
-#include <cstring>
+#include <sstream>
+#include <vector>
 
 using namespace std;
 
-void string_to_c_str(string string_val, char *c_string_val) {
-    strcpy(c_string_val, string_val.c_str());
+vector<string> split_whitespace(string input) {
+    vector<string> tokens;
+    istringstream iss(input);
+    string token;
+    while (iss >> token) {
+        tokens.push_back(token);
+    }
+    return tokens;
 }
