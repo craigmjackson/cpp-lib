@@ -5,16 +5,18 @@ using namespace std;
 #ifndef MISC_H
 #define MISC_H
 
-struct Platform {
-    string os_type = "";
-    string architecture = "";
-    string kernel_version_long = "";
-    string kernel_version = "";
+struct OsInfo {
+    string os_type = ""; // osInfo.sysname
+    string architecture = ""; // osInfo.machine
+    string kernel_version_long = ""; // osInfo.version
+    string kernel_version = ""; // osInfo.release
+    string hostname = "";
+    string domain_name = "";
 };
 
 vector<string> split(string string_val);
 vector<string> split(string string_val, char delimiter);
-Platform get_platform();
+OsInfo get_os_info();
 string ascii_from_hex(string hex_val);
 string hex_from_ascii(string ascii_val);
 int get_random_int(int min, int max);

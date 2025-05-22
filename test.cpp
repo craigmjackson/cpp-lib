@@ -63,9 +63,21 @@ void test_split() {
     cout << endl << endl;
 }
 
+void test_get_os_info() {
+    cout << "test_get_os_info()" << endl;
+    OsInfo os_info = get_os_info();
+    cout << "  os_type: \"" << os_info.os_type << "\"" << endl;
+    cout << "  architecture: \"" << os_info.architecture << "\"" << endl;
+    cout << "  kernel_version_long: \"" << os_info.kernel_version_long << "\"" << endl;
+    cout << "  kernel_version: \"" << os_info.kernel_version << "\"" << endl;
+    cout << "  hostname: \"" << os_info.hostname << "\"" << endl;
+    cout << "  domain_name: \"" << os_info.domain_name << "\"" << endl;
+}
+
 int main() {
     test_run_command();
     test_return_output();
     test_split();
+    test_get_os_info();
     return 0;
 }
