@@ -2,7 +2,6 @@
 #include <string>
 #include "misc.h"
 #include "io.h"
-#include <typeinfo>
 #include <vector>
 
 using namespace std;
