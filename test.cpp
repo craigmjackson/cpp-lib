@@ -47,12 +47,19 @@ void test_return_output() {
     cout << endl << endl;
 }
 
-void test_split_whitespace() {
-    cout << "test_split_whitespace()" << endl;
-    string bunch_of_text = "Honey bunches of      text";
-    vector<string> line_split = split_whitespace(bunch_of_text);
-    for ( string element: line_split ) {
-        cout << "Element: \"" << element << "\"" << endl;
+void test_split() {
+    cout << "test_split()" << endl;
+    string bunch_of_text = "Honey bunches of      text of randomness";
+    cout << "string: \"" << bunch_of_text << "\"" << endl;
+    cout << "split on whitespace: " << endl;
+    vector<string> whitespace_split = split(bunch_of_text);
+    for ( string element: whitespace_split ) {
+        cout << "  element: \"" << element << "\"" << endl;
+    }
+    cout << "split on \"o\": " << endl;
+    vector<string> o_split = split(bunch_of_text, 'o');
+    for ( string element: o_split ) {
+        cout << " element: \"" << element << "\"" << endl;
     }
     cout << endl << endl;
 }
@@ -60,6 +67,6 @@ void test_split_whitespace() {
 int main() {
     test_run_command();
     test_return_output();
-    test_split_whitespace();
+    test_split();
     return 0;
 }

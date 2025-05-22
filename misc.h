@@ -12,7 +12,8 @@ struct Platform {
     string kernel_version = "";
 };
 
-vector<string> split_whitespace(string string_val);
+vector<string> split(string string_val);
+vector<string> split(string string_val, char delimiter);
 Platform get_platform();
 string ascii_from_hex(string hex_val);
 string hex_from_ascii(string ascii_val);
