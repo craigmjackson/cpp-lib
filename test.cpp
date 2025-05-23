@@ -2,6 +2,7 @@
 #include <string>
 #include "misc.h"
 #include "io.h"
+#include "json.h"
 #include <vector>
 
 using namespace std;
@@ -94,9 +95,43 @@ void test_hex_to_ascii() {
 }
 
 void test_get_random_int() {
-    cout << "text_get_random_int()" << endl;
+    cout << "test_get_random_int()" << endl;
     int random_int = get_random_int(1, 50);
     cout << "Random int between 1 and 50: " << random_int << endl;
+    cout << endl << endl;
+}
+
+void test_parse_json() {
+    cout << "test_parse_json()" << endl;
+    string json_string = R"(
+        {
+            "hello": "world",
+            "other": [
+                "boring",
+                "phrases"
+            ]
+        }
+    )";
+    json json_object = parse_json(json_string);
+    cout << "hello: " << json_object["hello"] << endl;
+    cout << "other[0]: " << json_object["other"][0] << endl;
+    cout << "other[1]: " << json_object["other"][1] << endl;
+    cout << endl << endl;
+}
+
+void test_generate_json() {
+    cout << "test_generate_json()" << endl;
+    json json_object = {
+        {"hello", "world"},
+        {"other", {
+            "boring",
+            "phrases"
+        }}
+    };
+    cout << "  4 spaces (default):" << endl;
+    cout << generate_json(json_object);
+    cout << "  8 spaces (specified):" << endl;
+    cout << generate_json(json_object, 8);
     cout << endl << endl;
 }
 
@@ -108,5 +143,7 @@ int main() {
     test_ascii_to_hex();
     test_hex_to_ascii();
     test_get_random_int();
+    test_parse_json();
+    test_generate_json();
     return 0;
 }

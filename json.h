@@ -7,6 +7,7 @@ using json = nlohmann::json;
 #define JSON_H
 
 json parse_json(string json_string);
-string generate_json(json json_obj);
+string generate_json(json json_object);
+string generate_json(json json_object, int spaces);
 
 #endif // JSON_H
