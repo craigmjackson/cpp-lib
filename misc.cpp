@@ -4,8 +4,10 @@
 #include <string>
 #include <cstring>
 #include <sstream>
+#include <iomanip>
 #include <vector>
 #include "misc.h"
+
 using namespace std;
 
 vector<string> split(string input) {
@@ -39,4 +41,22 @@ OsInfo get_os_info() {
     os_info.hostname = sys_os_info.nodename;
     os_info.domain_name = sys_os_info.domainname;
     return os_info;
+}
+
+string hex_to_ascii(string hexa) {
+    string ascii = "";
+    for (int i = 0; i < hexa.length(); i += 2) {
+        string element = hexa.substr(i, 2);
+        char ascii_char = stoul(element, nullptr, 16);
+        ascii += ascii_char;
+    }
+    return ascii;
+}
+
+string ascii_to_hex(string ascii) {
+    ostringstream stream;
+    for (char character : ascii) {
+        stream << hex << setw(2) << std::setfill('0') << static_cast<int>(character);
+    }
+    return stream.str();
 }

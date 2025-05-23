@@ -72,6 +72,25 @@ void test_get_os_info() {
     cout << "  kernel_version: \"" << os_info.kernel_version << "\"" << endl;
     cout << "  hostname: \"" << os_info.hostname << "\"" << endl;
     cout << "  domain_name: \"" << os_info.domain_name << "\"" << endl;
+    cout << endl << endl;
+}
+
+void test_ascii_to_hex() {
+    cout << "text_ascii_to_hex()" << endl;
+    string cooka = "I cooka da pizza";
+    cout << "  ascii: " << cooka << endl;
+    string cooka_hex = ascii_to_hex(cooka);
+    cout << "  hex: " << cooka_hex << endl;
+    cout << endl << endl;
+}
+
+void test_hex_to_ascii() {
+    cout << "test_hex_to_ascii()" << endl;
+    string cooka_hex = "4920636f6f6b612064612070697a7a61";
+    cout << "  hex: " << cooka_hex << endl;
+    string cooka = hex_to_ascii(cooka_hex);
+    cout << "  ascii: " << cooka << endl;
+    cout << endl << endl;
 }
 
 int main() {
@@ -79,5 +98,7 @@ int main() {
     test_return_output();
     test_split();
     test_get_os_info();
+    test_ascii_to_hex();
+    test_hex_to_ascii();
     return 0;
 }

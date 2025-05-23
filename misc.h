@@ -17,8 +17,8 @@ struct OsInfo {
 vector<string> split(string string_val);
 vector<string> split(string string_val, char delimiter);
 OsInfo get_os_info();
-string ascii_from_hex(string hex_val);
-string hex_from_ascii(string ascii_val);
+string ascii_to_hex(string ascii_val);
+string hex_to_ascii(string hex_val);
 int get_random_int(int min, int max);
 
 #endif // MISC_H
