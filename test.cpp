@@ -93,6 +93,13 @@ void test_hex_to_ascii() {
     cout << endl << endl;
 }
 
+void test_get_random_int() {
+    cout << "text_get_random_int()" << endl;
+    int random_int = get_random_int(1, 50);
+    cout << "Random int between 1 and 50: " << random_int << endl;
+    cout << endl << endl;
+}
+
 int main() {
     test_run_command();
     test_return_output();
@@ -100,5 +107,6 @@ int main() {
     test_get_os_info();
     test_ascii_to_hex();
     test_hex_to_ascii();
+    test_get_random_int();
     return 0;
 }

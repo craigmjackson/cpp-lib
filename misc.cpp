@@ -60,3 +60,9 @@ string ascii_to_hex(string ascii) {
     }
     return stream.str();
 }
+
+int get_random_int(int min, int max) {
+    srand(time(0));
+    int random_int = rand() % (max - min + 1) + min;
+    return random_int;
+}
