@@ -1,10 +1,10 @@
 #include <iostream>
 #include <string>
+#include <vector>
 #include "misc.h"
 #include "io.h"
 #include "json.h"
 #include "time.h"
-#include <vector>
 
 using namespace std;
 
@@ -136,22 +136,16 @@ void test_generate_json() {
     cout << endl << endl;
 }
 
-// void test_get_time_string() {
-//     time_t unix_time = time(0);
-//     cout << get_time_string(unix_time) << endl;
-// }
+void test_get_time_string() {
+    int unix_time = get_unix_time();
+    get_time_string(unix_time);
+}
 
 void test_get_unix_time() {
     cout << "get_unix_time()" << endl;
     cout << get_unix_time() << endl;
     cout << endl << endl;
 }
-
-// void test_sleep() {
-//     cout << "Sleeping for 5 seconds..." << endl;
-//     sleep(5);
-//     cout << "Done" << endl;
-// }
 
 int main() {
     test_run_command();
@@ -163,8 +157,7 @@ int main() {
     test_get_random_int();
     test_parse_json();
     test_generate_json();
-    // test_get_time_string();
+    test_get_time_string();
     test_get_unix_time();
-    // test_sleep();
     return 0;
 }

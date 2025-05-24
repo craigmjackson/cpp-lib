@@ -1,19 +1,18 @@
-// #include <string>
 #include <chrono>
+#include <csignal>
+#include <iostream>
+#include "time.h"
 
 using namespace std;
 
-// string get_time_string(int unix_time) {
-//     time_t result = time((time_t)unix_time);
-//     cout << "get_time_string()" << endl;
-//     return "";
-// }
+void get_time_string(int unix_time) {
+    chrono::time_point timepoint = chrono::system_clock::from_time_t(unix_time);
+    cout << "timepoint" << endl;
+    // TODO: Make a string out of this timepoint
+}
 
 int get_unix_time() {
-    auto now = chrono::system_clock::now();
-    int unix_time_int = chrono::duration_cast<chrono::seconds>(now.time_since_epoch()).count();
-    return unix_time_int;
+    chrono::time_point now = chrono::system_clock::now();
+    int unix_time = chrono::system_clock::to_time_t(now);
+    return (int)unix_time;
 }
-// void sleep(int seconds) {
-//     cout << "sleep()" << endl;
-// }
