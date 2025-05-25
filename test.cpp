@@ -136,14 +136,20 @@ void test_generate_json() {
     cout << endl << endl;
 }
 
-void test_get_time_string() {
-    int unix_time = get_unix_time();
-    get_time_string(unix_time);
-}
-
 void test_get_unix_time() {
     cout << "get_unix_time()" << endl;
-    cout << get_unix_time() << endl;
+    time_t unix_time = get_unix_time();
+    cout << "Unix time: " << unix_time << endl;
+    cout << endl << endl;
+}
+
+void test_get_time_string() {
+    cout << "get_time_string()" << endl;
+    time_t unix_time = get_unix_time();
+    string time_string = get_time_string(unix_time);
+    string time_string_specified = get_time_string(1748154207);
+    cout << "Time string (now): " << time_string << endl;
+    cout << "Time string specified: " << time_string_specified << endl;
     cout << endl << endl;
 }
 
@@ -157,7 +163,7 @@ int main() {
     test_get_random_int();
     test_parse_json();
     test_generate_json();
-    test_get_time_string();
     test_get_unix_time();
+    test_get_time_string();
     return 0;
 }
