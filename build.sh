@@ -1,2 +1,9 @@
 #!/bin/bash
-g++ -std=c++20 -o test -g misc.h misc.cpp json.h json.cpp time.h time.cpp io.h io.cpp test.cpp
+toplevel_dir=$(dirname -- "$0")
+if [ -d ${toplevel_dir}/build ]; then
+    rm -rf build
+fi
+mkdir -p ${toplevel_dir}/build
+cd ${toplevel_dir}/build
+cmake ..
+cmake --build .

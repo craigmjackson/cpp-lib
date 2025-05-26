@@ -1,0 +1,32 @@
+[
+{
+  "directory": "/home/craig/cpp-lib/build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/test.dir/io.o -c /home/craig/cpp-lib/io.cpp",
+  "file": "/home/craig/cpp-lib/io.cpp",
+  "output": "CMakeFiles/test.dir/io.o"
+},
+{
+  "directory": "/home/craig/cpp-lib/build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/test.dir/json.o -c /home/craig/cpp-lib/json.cpp",
+  "file": "/home/craig/cpp-lib/json.cpp",
+  "output": "CMakeFiles/test.dir/json.o"
+},
+{
+  "directory": "/home/craig/cpp-lib/build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/test.dir/misc.o -c /home/craig/cpp-lib/misc.cpp",
+  "file": "/home/craig/cpp-lib/misc.cpp",
+  "output": "CMakeFiles/test.dir/misc.o"
+},
+{
+  "directory": "/home/craig/cpp-lib/build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/test.dir/time.o -c /home/craig/cpp-lib/time.cpp",
+  "file": "/home/craig/cpp-lib/time.cpp",
+  "output": "CMakeFiles/test.dir/time.o"
+},
+{
+  "directory": "/home/craig/cpp-lib/build",
+  "command": "/usr/bin/c++   -std=gnu++20 -o CMakeFiles/test.dir/test.o -c /home/craig/cpp-lib/test.cpp",
+  "file": "/home/craig/cpp-lib/test.cpp",
+  "output": "CMakeFiles/test.dir/test.o"
+}
+]
