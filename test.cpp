@@ -65,6 +65,25 @@ void test_read_file() {
     cout << endl << endl;
 }
 
+void test_append_file() {
+    cout << "test_append_file()" << endl;
+    string str = "Test string\nTest after newline\n";
+    cout << "Contents of string:" << endl;
+    cout << str << endl;
+    append_file("/tmp/test_io.txt", str);
+    str.append(str);
+    cout << "Contents of string after doubling:" << endl;
+    cout << str << endl;
+    string after_append = read_file("/tmp/test_io.txt");
+    if (str.compare(after_append) == 0) {
+        cout << "str is identical to after_append" << endl;
+    } else {
+        cout << "str is different from after_append" << endl;
+    }
+    cout << endl << endl;
+
+}
+
 void test_split() {
     cout << "test_split()" << endl;
     string bunch_of_text = "Honey bunches of      text of randomness";
@@ -175,6 +194,7 @@ int main() {
     test_return_output();
     test_write_file();
     test_read_file();
+    test_append_file();
     test_split();
     test_get_os_info();
     test_ascii_to_hex();

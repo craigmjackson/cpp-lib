@@ -14,9 +14,9 @@ struct ShellResult {
 void print_shell_result(ShellResult result);
 ShellResult run_command(string command, string cwd, bool debug);
 ShellResult return_output(string command, string cwd, bool debug);
-string read_file(string path);
 void write_file(string path, string text);
 void append_file(string path, string text);
+string read_file(string path);
 void log(string path, string text);
 int file_exists(string path);
 string get_symlink_target(string path);

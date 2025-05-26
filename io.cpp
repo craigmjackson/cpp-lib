@@ -91,6 +91,17 @@ void write_file(string path, string str) {
     }
 }
 
+void append_file(string path, string str) {
+    ofstream handle(path, ios_base::app);
+    if (handle.is_open()) {
+        handle << str;
+        handle.close();
+    } else {
+        cout << "Unable to open file \"" << path << "\" for appending";
+    }
+}
+
+
 string read_file(string path) {
     string contents;
     string line;
