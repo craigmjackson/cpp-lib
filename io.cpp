@@ -1,3 +1,4 @@
+#include <fstream>
 #include <string>
 #include <cstdlib>
 #include <cstring>
@@ -80,3 +81,29 @@ ShellResult return_output(string command, string cwd, bool debug) {
     return result;
 }
 
+void write_file(string path, string str) {
+    ofstream handle(path);
+    if (handle.is_open()) {
+        handle << str;
+        handle.close();
+    } else {
+        cout << "Unable to open file \"" << path << "\" for writing";
+    }
+}
+
+string read_file(string path) {
+    string contents;
+    string line;
+    ifstream handle(path);
+    if (handle.is_open()) {
+        while (getline(handle, line)) {
+            contents.append(line);
+            contents.append("\n");
+        }
+        handle.close();
+        return contents;
+    } else {
+        cout << "Unable to open file \"" << path << "\" for reading";
+    }
+    return "";
+}

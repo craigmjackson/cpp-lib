@@ -48,6 +48,23 @@ void test_return_output() {
     cout << endl << endl;
 }
 
+void test_write_file() {
+    cout << "test_write_file()" << endl;
+    string str = "Test string\nTest after newline\n";
+    cout << "Contents of string:" << endl;
+    cout << str << endl;
+    write_file("/tmp/test_io.txt", str);
+    cout << endl << endl;
+}
+
+void test_read_file() {
+    cout << "test_read_file()" << endl;
+    string contents = read_file("/tmp/test_io.txt");
+    cout << "Contents of file:" << endl;
+    cout << contents << endl;
+    cout << endl << endl;
+}
+
 void test_split() {
     cout << "test_split()" << endl;
     string bunch_of_text = "Honey bunches of      text of randomness";
@@ -156,6 +173,8 @@ void test_get_time_string() {
 int main() {
     test_run_command();
     test_return_output();
+    test_write_file();
+    test_read_file();
     test_split();
     test_get_os_info();
     test_ascii_to_hex();
