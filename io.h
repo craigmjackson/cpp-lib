@@ -11,14 +11,23 @@ struct ShellResult {
     string output = "";
 };
 
+enum class LogLevel {
+    FATAL = 0,
+    ERROR,
+    WARN,
+    INFO,
+    DEBUG,
+    TRACE
+};
+
 void print_shell_result(ShellResult result);
 ShellResult run_command(string command, string cwd, bool debug);
 ShellResult return_output(string command, string cwd, bool debug);
 void write_file(string path, string text);
 void append_file(string path, string text);
 string read_file(string path);
-void log(string path, string text);
-int file_exists(string path);
+void log(string log_file, string text, LogLevel log_level);
+bool file_exists(string path);
 string get_symlink_target(string path);
 void create_dir(string path);
 void remove_dir(string path);

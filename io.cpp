@@ -1,4 +1,6 @@
+#include <ctime>
 #include <fstream>
+#include <sstream>
 #include <string>
 #include <cstdlib>
 #include <cstring>
@@ -6,6 +8,7 @@
 #include <iostream>
 #include "io.h"
 #include "misc.h"
+#include "time.h"
 
 using namespace std;
 
@@ -117,4 +120,36 @@ string read_file(string path) {
         cout << "Unable to open file \"" << path << "\" for reading";
     }
     return "";
+}
+
+string getLogLevelString(LogLevel log_level) {
+    switch (log_level) {
+        case LogLevel::TRACE:
+            return "TRACE";
+        case LogLevel::DEBUG:
+            return "DEBUG";
+        case LogLevel::INFO:
+            return "INFO";
+        case LogLevel::WARN:
+            return "WARN";
+        case LogLevel::ERROR:
+            return "ERROR";
+        case LogLevel::FATAL:
+            return "FATAL";
+        default:
+            return "UNKNOWN";
+    }
+}
+
+void log(string log_file, string text, LogLevel log_level) {  
+    time_t unix_time = get_unix_time();
+    string time_string = get_time_string(unix_time);
+    ostringstream entry;
+    entry << time_string << " " << getLogLevelString(log_level) << ": " << text << endl;
+    cout << entry.str();
+    append_file(log_file, entry.str());
+}
+
+bool file_exists(string path) {
+    return true;
 }

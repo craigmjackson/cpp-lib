@@ -189,6 +189,17 @@ void test_get_time_string() {
     cout << endl << endl;
 }
 
+void test_log() {
+    cout << "test_log()" << endl;
+    run_command("rm -f /tmp/test.log", "", false);
+    LogLevel log_level = LogLevel::INFO;
+    log("/tmp/test.log", "Test log entry", log_level);
+    string logfile_text = read_file("/tmp/test.log");
+    cout << "Logfile text: " << endl;
+    cout << logfile_text << endl;
+    cout << endl << endl;
+}
+
 int main() {
     test_run_command();
     test_return_output();
@@ -204,5 +215,6 @@ int main() {
     test_generate_json();
     test_get_unix_time();
     test_get_time_string();
+    test_log();
     return 0;
 }
