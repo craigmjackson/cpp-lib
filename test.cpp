@@ -229,6 +229,19 @@ void test_file_exists() {
     cout << endl << endl;
 }
 
+void test_get_symlink_target() {
+    cout << "test_get_symlink_target()" << endl;
+    run_command("touch /tmp/symlink_target", "", false);
+    run_command("ln -sf /tmp/symlink_target /tmp/symlink_source", "", false);
+    string symlink_source = get_symlink_target("/tmp/symlink_source");
+    cout << "Symlink target for /tmp/symlink_source: " << symlink_source << endl;
+    string symlink_target = get_symlink_target("/tmp/symlink_target");
+    cout << "Symlink target for /tmp/symlink_target: " << symlink_target << endl;
+    string fake_file = get_symlink_target("/tmp/fake_file");
+    cout << "Symlink target for /tmp/fake_file: " << fake_file << endl;
+    cout << endl << endl;
+}
+
 int main() {
     test_run_command();
     test_return_output();
@@ -246,5 +259,6 @@ int main() {
     test_get_time_string();
     test_log();
     test_file_exists();
+    test_get_symlink_target();
     return 0;
 }

@@ -154,3 +154,15 @@ void log(string log_file, string text, LogLevel log_level) {
 bool file_exists(string path) {
     return filesystem::exists(path);
 }
+
+string get_symlink_target(string path) {
+    if (file_exists(path)) {
+        if (filesystem::is_symlink(path)) {
+            return filesystem::read_symlink(path);
+        }
+        cout << "\"" << path << "\" is not a symlink" << endl;
+        return "";
+    }
+    cout << "\"" << path << "\" does not exist" << endl;
+    return "";
+}
