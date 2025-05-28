@@ -6,6 +6,7 @@
 #include <cstring>
 #include <unistd.h>
 #include <iostream>
+#include <filesystem>
 #include "io.h"
 #include "misc.h"
 #include "time.h"
@@ -151,5 +152,5 @@ void log(string log_file, string text, LogLevel log_level) {
 }
 
 bool file_exists(string path) {
-    return true;
+    return filesystem::exists(path);
 }

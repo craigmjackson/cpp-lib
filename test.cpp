@@ -200,6 +200,35 @@ void test_log() {
     cout << endl << endl;
 }
 
+void test_file_exists() {
+    cout << "test_file_exists()" << endl;
+    cout << "Creating file /tmp/file.ext..." << endl;
+    write_file("/tmp/file.ext", "file.ext");
+    if (file_exists("/tmp/file.ext")) {
+        cout << "/tmp/file.ext exists" << endl;
+    } else {
+        cout << "/tmp/file.ext does not exist" << endl;
+    }
+    if (file_exists("/tmp/file.extension")) {
+        cout << "/tmp/file.extension does not exist" << endl;
+    }
+    run_command("rm -f /tmp/file.ext", "", false);
+    cout << "Creating directory /tmp/directory..." << endl;
+    run_command("mkdir -p /tmp/directory", "", false);
+    if (file_exists("/tmp/directory")) {
+        cout << "/tmp/directory exists" << endl;
+    } else {
+        cout << "/tmp/directory does not exist" << endl;
+    }
+    if (file_exists("/tmp/not_a_directory")) {
+        cout << "/tmp/not_a_directory exists" << endl;
+    } else {
+        cout << "/tmp/not_a_directory does not exist" << endl;
+    }
+    run_command("rm -rf /tmp/directory", "", false);
+    cout << endl << endl;
+}
+
 int main() {
     test_run_command();
     test_return_output();
@@ -216,5 +245,6 @@ int main() {
     test_get_unix_time();
     test_get_time_string();
     test_log();
+    test_file_exists();
     return 0;
 }
