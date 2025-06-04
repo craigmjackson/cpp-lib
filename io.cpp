@@ -166,3 +166,11 @@ string get_symlink_target(string path) {
     cout << "\"" << path << "\" does not exist" << endl;
     return "";
 }
+
+void create_dir(string path) {
+    filesystem::create_directories(path);
+}
+
+void remove_dir(string path) {
+    filesystem::remove_all(path);
+}

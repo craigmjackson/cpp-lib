@@ -242,6 +242,43 @@ void test_get_symlink_target() {
     cout << endl << endl;
 }
 
+void test_create_dir() {
+    cout << "test_create_dir()" << endl;
+    cout << "Checking existence before creation..." << endl;
+    if (file_exists("/tmp/test/dir")) {
+        cout << "Directory /tmp/test/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/dir does not exist" << endl;
+    }
+    cout << "Creating directory /tmp/test/dir..." << endl;
+    create_dir("/tmp/test/dir");
+    if (file_exists("/tmp/test/dir")) {
+        cout << "Directory /tmp/test/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/dir does not exist" << endl;
+    }
+    cout << endl << endl;
+}
+
+void test_remove_dir() {
+    cout << "test_remove_dir()" << endl;
+    cout << "Checking existence before removal..." << endl;
+    if (file_exists("/tmp/test/dir")) {
+        cout << "Directory /tmp/test/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/dir does not exist" << endl;
+    }
+    cout << "Removing directory /tmp/test/dir..." << endl;
+    remove_dir("/tmp/test/dir");
+    if (file_exists("/tmp/test/dir")) {
+        cout << "Directory /tmp/test/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/dir does not exist" << endl;
+    }
+    cout << endl << endl;
+}
+
+
 int main() {
     test_run_command();
     test_return_output();
@@ -260,5 +297,7 @@ int main() {
     test_log();
     test_file_exists();
     test_get_symlink_target();
+    test_create_dir();
+    test_remove_dir();
     return 0;
 }
