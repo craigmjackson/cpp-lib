@@ -278,6 +278,42 @@ void test_remove_dir() {
     cout << endl << endl;
 }
 
+void test_copy_dir() {
+    cout << "test_copy_dir()" << endl;
+    cout << "Checking for source existence..." << endl;
+    if (file_exists("/tmp/test/source/dir") == 0) {
+        cout << "Populating source dir..." << endl;
+        create_dir("/tmp/test/source/dir");
+        write_file("/tmp/test/source/dir/file.txt", "test text");
+    }
+    if (file_exists("/tmp/test/target/dir") == 1) {
+        cout << "Directory /tmp/test/target/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/target/dir does not exist" << endl;
+    }
+    if (file_exists("/tmp/test/target/dir/file.txt")) {
+        cout << "File /tmp/test/target/dir/file.txt exists" << endl;
+    } else {
+        cout << "File /tmp/test/target/dir/file.txt does not exist" << endl;
+    }
+    cout << "Creating /tmp/test/target..." << endl;
+    create_dir("/tmp/test/target");
+    cout << "Copying /tmp/test/source/dir/ to /tmp/test/target/dir/..." << endl;
+    copy_dir("/tmp/test/source/dir", "/tmp/test/target/dir");
+    if (file_exists("/tmp/test/target/dir")) {
+        cout << "Directory /tmp/test/target/dir exists" << endl;
+    } else {
+        cout << "Directory /tmp/test/target/dir does not exist" << endl;
+    }
+    if (file_exists("/tmp/test/target/dir/file.txt")) {
+        cout << "File /tmp/test/target/dir/file.txt exists" << endl;
+    } else {
+        cout << "File /tmp/test/target/dir/file.txt does not exist" << endl;
+    }
+    remove_dir("/tmp/test/target/dir");
+    cout << endl << endl;
+}
+
 
 int main() {
     test_run_command();
@@ -299,5 +335,6 @@ int main() {
     test_get_symlink_target();
     test_create_dir();
     test_remove_dir();
+    test_copy_dir();
     return 0;
 }

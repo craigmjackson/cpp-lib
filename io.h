@@ -31,7 +31,7 @@ bool file_exists(string path);
 string get_symlink_target(string path);
 void create_dir(string path);
 void remove_dir(string path);
-void copy_dir(string src_path, string src_dest);
+void copy_dir(string source, string dest);
 void copy_file(string src_path, string src_dest);
 void create_archive(string dir_path, string archive_path);
 void extract_archive(string archive_path, string extract_path);

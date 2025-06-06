@@ -174,3 +174,11 @@ void create_dir(string path) {
 void remove_dir(string path) {
     filesystem::remove_all(path);
 }
+
+void copy_dir(string source, string target) {
+    try {
+        filesystem::copy(source, target, filesystem::copy_options::overwrite_existing | filesystem::copy_options::recursive);
+    } catch (exception& e) {
+        cout << e.what();
+    }
+}
